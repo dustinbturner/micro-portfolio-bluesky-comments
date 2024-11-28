@@ -7,7 +7,7 @@ import { readingTime } from "@lib/utils";
 import BackToPrevious from "@components/BackToPrevious.astro";
 import PostNavigation from "@components/PostNavigation.astro";
 import TableOfContents from "@components/TableOfContents.astro";
-import Giscus from "@components/Giscus.astro";
+import CommentSection from "@components/CommentSection.astro";
 
 export async function getStaticPaths() {
   const posts = (await getCollection("blog"))
@@ -44,14 +44,21 @@ function getPrevPost() {
   }
 }
 
-const nextPost = getNextPost();
-const prevPost = getPrevPost();
-
 const post = Astro.props;
 const { Content, headings } = await post.render();
+
+const prevPost = getPrevPost();
+const nextPost = getNextPost();
+
+const ogImage = post.data.heroImage?.url || '/images/og-default.jpg';
+
 ---
 
-<Layout title={post.data.title} description={post.data.description}>
+<Layout
+  title={post.data.title}
+  description={post.data.description}
+  image={ogImage}
+>
   <Container>
     <div class="animate">
       <BackToPrevious href="/blog">Back to blog</BackToPrevious>
@@ -66,7 +73,7 @@ const { Content, headings } = await post.render();
           {readingTime(post.body)}
         </div>
       </div>
-      <h1 class="animate text-3xl font-semibold text-black dark:text-white">
+      <h1 class="animate text-3xl font-semibold text-neutral-800">
         {post.data.title}
       </h1>
     </div>
@@ -77,7 +84,7 @@ const { Content, headings } = await post.render();
         <PostNavigation prevPost={prevPost} nextPost={nextPost} />
       </div>
       <div class="mt-24">
-        <Giscus />
+        {post.data.blueskyUri && <CommentSection uri={post.data.blueskyUri} />}
       </div>
     </article>
   </Container>

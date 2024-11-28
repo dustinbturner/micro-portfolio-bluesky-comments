@@ -8,10 +8,6 @@ html {
   scroll-padding-top: 100px;
 }
 
-html.dark {
-  color-scheme: dark;
-}
-
 html,
 body {
   @apply size-full;
@@ -20,13 +16,13 @@ body {
 body {
   @apply font-sans antialiased;
   @apply flex flex-col;
-  @apply bg-neutral-100 dark:bg-neutral-900;
-  @apply text-black/75 dark:text-white/75;
+  @apply bg-neutral-100;
+  @apply text-neutral-700;
 }
 
 header {
   @apply fixed left-0 right-0 top-0 z-50 py-6;
-  @apply bg-neutral-100/75 dark:bg-neutral-900/75;
+  @apply bg-neutral-100/75;
   @apply saturate-200 backdrop-blur-sm;
 }
 
@@ -35,24 +31,26 @@ main {
 }
 
 footer {
-  @apply py-6 text-sm;
+  @apply py-6 text-sm text-neutral-600;
 }
 
 article {
-  @apply prose prose-neutral max-w-full dark:prose-invert prose-img:mx-auto prose-img:my-auto;
+  @apply prose prose-neutral max-w-full;
   @apply prose-headings:font-semibold;
-  @apply prose-headings:text-black prose-headings:dark:text-white;
+  @apply prose-headings:text-neutral-800;
+  @apply prose-a:text-neutral-700 hover:prose-a:text-neutral-900;
+  @apply prose-strong:text-neutral-800;
 }
 
 @layer utilities {
   article a {
-    @apply font-sans text-current underline underline-offset-[3px];
-    @apply decoration-black/30 dark:decoration-white/30;
+    @apply font-sans text-neutral-700 underline underline-offset-[3px];
+    @apply decoration-neutral-400;
     @apply transition-colors duration-300 ease-in-out;
   }
   article a:hover {
-    @apply text-black dark:text-white;
-    @apply decoration-black/50 dark:decoration-white/50;
+    @apply text-neutral-900;
+    @apply decoration-neutral-600;
   }
 }
 
@@ -75,44 +73,32 @@ html.scrolled #back-to-top {
 
 /* shiki config */
 pre {
-  @apply border border-black/15 py-5 dark:border-white/20;
+  @apply border border-neutral-400 py-5;
 }
 
 :root {
-  --astro-code-color-text: #09090b;
-  --astro-code-color-background: #fafafa;
-  --astro-code-token-comment: #a19595;
+  --astro-code-color-text: theme('colors.neutral.800');
+  --astro-code-color-background: theme('colors.neutral.100');
+  --astro-code-token-comment: theme('colors.neutral.500');
   --astro-code-token-keyword: #f47067;
   --astro-code-token-string: #00a99a;
   --astro-code-token-function: #429996;
   --astro-code-token-constant: #2b70c5;
   --astro-code-token-parameter: #4e8fdf;
   --astro-code-token-string-expression: #ae42a0;
-  --astro-code-token-punctuation: #8996a3;
-  --astro-code-token-link: #8d85ff;
-}
-
-.dark {
-  --astro-code-color-text: #fafafa;
-  --astro-code-color-background: #09090b;
-  --astro-code-token-comment: #a19595;
-  --astro-code-token-keyword: #f47067;
-  --astro-code-token-string: #00a99a;
-  --astro-code-token-function: #6eafad;
-  --astro-code-token-constant: #b3cceb;
-  --astro-code-token-parameter: #4e8fdf;
-  --astro-code-token-string-expression: #bf7db6;
-  --astro-code-token-punctuation: #8996a3;
+  --astro-code-token-punctuation: theme('colors.neutral.600');
   --astro-code-token-link: #8d85ff;
 }
 
 /* copy code button on codeblocks */
 .copy-code {
-  @apply absolute right-3 top-3 grid size-9 place-content-center rounded border border-black/15 bg-neutral-100 text-center duration-300 ease-in-out dark:border-white/20 dark:bg-neutral-900;
+  @apply absolute right-3 top-3 grid size-9 place-content-center rounded;
+  @apply border border-neutral-400 bg-neutral-200 text-center;
+  @apply duration-300 ease-in-out;
 }
 
 .copy-code:hover {
-  @apply bg-[#E9E9E9] transition-colors dark:bg-[#232323];
+  @apply bg-neutral-300 border-neutral-500 transition-colors;
 }
 
 .copy-code:active {
