@@ -13,11 +13,9 @@ const projects = (await getCollection("projects"))
 <Layout title={PROJECTS.TITLE} description={PROJECTS.DESCRIPTION}>
   <Container>
     <aside data-pagefind-ignore>
-      <div class="space-y-10">
-        <div class="animate font-semibold text-neutral-800">
-          Projects
-        </div>
-        <ul class="animate not-prose flex flex-col gap-4">
+      <div class='space-y-10'>
+        <div class='animate font-semibold text-neutral-800'>Projects</div>
+        <ul class='animate not-prose flex flex-col gap-4'>
           {
             projects.map((project) => (
               <li>

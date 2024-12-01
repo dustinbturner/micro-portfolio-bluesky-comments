@@ -28,28 +28,42 @@ const projects: CollectionEntry<"projects">[] = (
 <Layout title={HOME.TITLE} description={HOME.DESCRIPTION}>
   <Container>
     <aside data-pagefind-ignore class='py-8'>
-      <h1 class='font-semibold text-neutral-800'>Hi I'm Dustin.</h1>
       <div class='space-y-16'>
         {/* Bio Section */}
         <section class='mb-16'>
           <article class='space-y-10'>
-            <span>
-              <p class='text-md mb-6'>
-                <Link href='https://blueskyroast.com/roast/dustinturner.io'>
-                  Chief Encourager of Indie Innovation on Bluesky
-                </Link>
-              </p>
-              <p>
-                I'm a self-taught, full-stack developer that is currently
-                building
-                <Link href='https://bluesletter.social'>
-                  bluesletter.social
-                </Link>
-                , a platform using the Bluesky ecosystem and AT protocol to help
-                entrepreneurs, creators, and builders make use of social media more
-                authentically.
-              </p>
-            </span>
+            <div class='grid grid-cols-1 items-start gap-4 md:grid-cols-2'>
+              {/* Image Column */}
+              <div
+                class='relative mx-auto w-full max-w-[200px] rounded-full md:mx-0'
+              >
+                <img
+                  src='/avatar.png'
+                  alt='Dustin Turner'
+                  class='h-full w-full rounded-full object-cover'
+                />
+              </div>
+
+              {/* Content Column */}
+              <div class='space-y-6'>
+                <h1 class='text-lg font-semibold text-neutral-800'>
+                  Hi I'm Dustin.
+                </h1>
+                <p class='text-sm'>
+                  <Link href='https://blueskyroast.com/roast/dustinturner.io'>
+                    Chief Encourager of Indie Innovation on Bluesky
+                  </Link>
+                </p>
+                <p class='text-md text-balance'>
+                  I'm building
+                  <Link href='https://bluesletter.social'>
+                    bluesletter.social
+                  </Link>
+                  , a platform to help entrepreneurs, creators, and builders make
+                  use of social media more authentically.
+                </p>
+              </div>
+            </div>
 
             {/* Tech Stack Icons */}
             <div class='flex w-full max-w-xl items-center justify-evenly'>

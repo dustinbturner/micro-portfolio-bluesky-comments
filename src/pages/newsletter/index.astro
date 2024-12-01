@@ -1,31 +1,30 @@
 ---
 import { type CollectionEntry, getCollection } from "astro:content";
-import Layout from "@layouts/Layout.astro";
-import Container from "@components/Container.astro";
-import ArrowCard from "@components/ArrowCard.astro";
-import { BLOG } from "@consts";
+import Layout from "../../layouts/Layout.astro";
+import Container from "../../components/Container.astro";
+import ArrowCard from "../../components/ArrowCard.astro";
 
-const data = (await getCollection("blog"))
-  .filter((post) => !post.data.draft)
+const data = (await getCollection("newsletter"))
+  .filter((edition) => !edition.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 type Acc = {
-  [year: string]: CollectionEntry<"blog">[];
+  [year: string]: CollectionEntry<"newsletter">[];
 };
 
-const posts = data.reduce((acc: Acc, post) => {
-  const year = post.data.date.getFullYear().toString();
+const editions = data.reduce((acc: Acc, edition) => {
+  const year = edition.data.date.getFullYear().toString();
   if (!acc[year]) {
     acc[year] = [];
   }
-  acc[year].push(post);
+  acc[year].push(edition);
   return acc;
 }, {});
 
-const years = Object.keys(posts).sort((a, b) => parseInt(b) - parseInt(a));
+const years = Object.keys(editions).sort((a, b) => parseInt(b) - parseInt(a));
 ---
 
-<Layout title={BLOG.TITLE} description={BLOG.DESCRIPTION}>
+<Layout title='Newsletter' description='Archive of my newsletter editions'>
   <Container>
     <aside data-pagefind-ignore>
       <div class='space-y-10'>
@@ -33,13 +32,15 @@ const years = Object.keys(posts).sort((a, b) => parseInt(b) - parseInt(a));
           {
             years.map((year) => (
               <section class='animate space-y-4'>
-                <div class='animate font-semibold text-neutral-800'>Blog</div>
+                <div class='animate font-semibold text-neutral-800'>
+                  Newsletter
+                </div>
                 <div class='font-semibold text-neutral-800'>{year}</div>
                 <div>
                   <ul class='not-prose flex flex-col gap-4'>
-                    {posts[year].map((post) => (
+                    {editions[year].map((edition) => (
                       <li>
-                        <ArrowCard entry={post} />
+                        <ArrowCard entry={edition} />
                       </li>
                     ))}
                   </ul>
