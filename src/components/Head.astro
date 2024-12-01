@@ -52,8 +52,10 @@ const { title, description, image = "/Open-Graph-Image.png" } = Astro.props;
 <meta property='twitter:image' content={new URL(image, Astro.url)} />
 
 <!-- Google tag (gtag.js) -->
-<script async src='https://www.googletagmanager.com/gtag/js?id=G-KLQ9YKDBNC'
-></script>
+<script
+  is:inline
+  async
+  src='https://www.googletagmanager.com/gtag/js?id=G-KLQ9YKDBNC'></script>
 <script is:inline>
   window.dataLayer = window.dataLayer || [];
   function gtag() {
@@ -70,6 +72,7 @@ const { title, description, image = "/Open-Graph-Image.png" } = Astro.props;
 
 <!-- Plausible Analytics -->
 <script
+  is:inline
   defer
   data-domain='dustinturner.io'
   src='https://plausible.io/js/script.js'></script>
