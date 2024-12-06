@@ -37,8 +37,3 @@ export const SOCIALS: Socials = [
     HREF: "https://github.com/dustinbturner",
   },
 ];
-
-export const NEWSLETTER: Metadata = {
-  TITLE: "Newsletter",
-  DESCRIPTION: "Archive of my newsletter editions",
-};

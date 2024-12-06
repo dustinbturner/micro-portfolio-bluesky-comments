@@ -6,7 +6,6 @@ import ArrowCard from "@components/ArrowCard.astro";
 import Link from "@components/Link.astro";
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
-import NewsletterForm from "@components/NewsletterForm.astro";
 
 const blog = (await getCollection("blog"))
   .filter((post) => !post.data.draft)
@@ -45,22 +44,18 @@ const projects: CollectionEntry<"projects">[] = (
               </div>
 
               {/* Content Column */}
-              <div class='space-y-6'>
+              <div class='mt-10 space-y-4'>
                 <h1 class='text-lg font-semibold text-neutral-800'>
                   Hi I'm Dustin.
                 </h1>
-                <p class='text-sm'>
+                <p class='mb-4 text-xs'>
                   <Link href='https://blueskyroast.com/roast/dustinturner.io'>
                     Chief Encourager of Indie Innovation on Bluesky
                   </Link>
                 </p>
                 <p class='text-md text-balance'>
-                  I'm building
-                  <Link href='https://bluesletter.social'>
-                    bluesletter.social
-                  </Link>
-                  , a platform to help entrepreneurs, creators, and builders make
-                  use of social media more authentically.
+                  I'm a full stack developer that loves to build creative new
+                  projects and encourage innovation.
                 </p>
               </div>
             </div>
@@ -120,16 +115,6 @@ const projects: CollectionEntry<"projects">[] = (
           </article>
         </section>
       </div>
-
-      {/* Newsletter Section */}
-      <section id='newsletter' class='mb-16 space-y-6'>
-        <div class='mb-8 flex flex-wrap items-center justify-between gap-y-2'>
-          <h2 class='font-semibold text-neutral-800'>Newsletter</h2>
-        </div>
-        <div>
-          <NewsletterForm />
-        </div>
-      </section>
 
       {/* Latest Posts Section */}
       <section class='mb-16'>

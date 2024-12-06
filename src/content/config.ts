@@ -35,19 +35,7 @@ const projects = defineCollection({
   }),
 });
 
-const newsletter = defineCollection({
-  type: "content",
-  schema: z.object({
-    title: z.string(),
-    date: z.coerce.date(),
-    draft: z.boolean().optional().default(false),
-    description: z.string(),
-    edition: z.number(),
-  }),
-});
-
 export const collections = {
   blog,
   projects,
-  newsletter,
 };
